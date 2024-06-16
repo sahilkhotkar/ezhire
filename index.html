@@ -55,7 +55,7 @@
                         <ul>
                             <li class="active"><a href="index.html">home</a></li>
                             <li><a href="about.html">about us</a></li>
-                            <li><a href="">category</a></li>
+                            <li><a href="" id="categoryLink">category</a></li>
                             <!-- <li><a href="#">blog</a>
                                 <ul class="sub-menu">
                                     <li><a href="blog-home.html">Blog Home</a></li>
@@ -998,7 +998,14 @@
             counter("count3", 0, 10, 21);
             // counter("count4", 10, 56, 1000);
         });
+        const categoryLink = document.getElementById('categoryLink');
+
+        categoryLink.addEventListener('click', function (event) {
+            event.preventDefault(); 
+            window.scrollTo({ top: document.body.scrollHeight/5.5, behavior: 'smooth' });
+        });
     </script>
+   
     <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="assets/js/vendor/bootstrap-4.1.3.min.js"></script>
     <script src="assets/js/vendor/wow.min.js"></script>
