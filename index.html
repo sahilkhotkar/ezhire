@@ -98,7 +98,7 @@
                             have to do it alone. We're here to help you connect with the perfect candidates. Your ideal
                             employee is just a click away.
                         </p>
-                        <a href="#" class="secondary-btn">explore now<span class="flaticon-next"></span></a>
+                        <a href="#" id="exploreMoreButton" class="secondary-btn">explore now<span class="flaticon-next"></span></a>
                     </div>
                 </div>
             </div>
@@ -451,9 +451,10 @@
 
             </div>
         </form>
-        <div class="forbuttonrow" style="width: 100%;">
-            <button id="closeDialog" class="btn btn-primary mt-2">Close</button>
-            <button id="submitButton" class="btn btn-primary mt-2">Get a call!</button>
+        <div class="forbuttonrow">
+            <button id="closeDialog" class="mt-2">Close</button>
+            <div style="width: 0.3rem;"></div>
+            <button id="submitButton" class="mt-2">Get a call!</button>
         </div>
     </dialog>
     <!-- Category Area Starts -->
@@ -1129,8 +1130,14 @@
 
         submitButton.addEventListener('click', () => {
             event.preventDefault(); // Prevent default form submission
-
-            addLeadToFirestore(
+            if(nameInput.value == ""){
+                alert("Name is mandatory.");
+            }
+            else if(emailInput.value == ""){
+                alert("E-mail is mandatory.");
+            }
+            else{
+                addLeadToFirestore(
                 emailInput.value || null,
                 nameInput.value || null,
                 phoneInput.value || null,
@@ -1140,7 +1147,7 @@
                 .then((result) => {
                     if (result) {
                         alert("You'll be contacted shortly!");
-                        dialog.close();
+                        // dialog.close();
                         console.log("Lead added successfully!");
                         emailInput.value = "";
                         nameInput.value = "";
@@ -1158,6 +1165,8 @@
                 .catch((error) => {
                     console.error("Error adding lead:", error);
                 });
+            }
+            
         });
         subscribebutton.addEventListener('click', () => {
             event.preventDefault();
@@ -1193,6 +1202,7 @@
         });
         const categoryLink = document.getElementById('categoryLink');
         const categoryLinkFooter = document.getElementById('categoryLinkFooter');
+        const exploreMoreButton = document.getElementById('exploreMoreButton');
         const categoryCard = document.querySelectorAll('.service-card');
 
         categoryLink.addEventListener('click', function (event) {
@@ -1201,6 +1211,11 @@
 
         });
         categoryLinkFooter.addEventListener('click', function (event) {
+            event.preventDefault();
+            window.scrollTo({ top: document.body.scrollHeight / 5.5, behavior: 'smooth' });
+
+        });
+        exploreMoreButton.addEventListener('click', function (event) {
             event.preventDefault();
             window.scrollTo({ top: document.body.scrollHeight / 5.5, behavior: 'smooth' });
 

@@ -3878,3 +3878,22 @@ form .template-btn {
     to {margin-left: -200%}
     
 }
+.forbuttonrow{
+    margin-top: 0.3rem;
+    display: flex;
+    flex-direction: row;
+
+}
+.forbuttonrow button{
+    /* margin: .3rem; */
+    color: #fff;
+    width: 50%;
+    background-color: rgb(121, 95, 255);
+}
+.forbuttonrow button:hover{
+    /* margin: .3rem; */
+    color: rgb(121, 95, 255);
+    transition-duration: 0.5s;
+    width: 50%;
+    background-color: #fff;
+}
